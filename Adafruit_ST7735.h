@@ -31,7 +31,14 @@ as well as Adafruit raw 1.8" TFT display
  #include "WProgram.h"
 #endif
 
-#include <Adafruit_GFX.h>
+#include "Adafruit_GFX.h"
+
+#if defined(_WINDOWS_)
+#define PROGMEM
+#define pgm_read_byte(addr) (*(const unsigned char *)(addr))
+#define pgm_read_word(addr) (*(const unsigned short *)(addr))
+typedef unsigned char prog_uchar;
+#endif
 
 #if defined(__SAM3X8E__)
 #include <include/pio.h>
